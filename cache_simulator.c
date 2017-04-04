@@ -299,7 +299,7 @@ int main(int argc, const char * argv[])
     	printf("Memory writes: %d\n", h_memory_writes);
 
 	fclose(traceFile);
-  	/**free_cache();**/
+  	freeCache();
 
 	return 0;
 
