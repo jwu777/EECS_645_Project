@@ -114,7 +114,7 @@ void updateRecents(int new, int index)
 /**
 	Cache read policy
 **/
-/** Performs a write-through or "wt" read operation on a read in address. **/
+/** Performs a read operation on a read in address. **/
 void readCache(char address[])
 {
 	int index = getIndex(address, getTagLength(address)) * h_associativity;
