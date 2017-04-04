@@ -9,7 +9,7 @@ To compile the program:
 2. Compile the program using the make command.
 
 To run the program:
-cache_simulator [-h][cache_size][associativity][block_size][trace file]
+cache_simulator [-h][cache_size][associativity][block_size][trace_file]
 
 Parameter descriptions:
   - "-h" can be "ignored".
