@@ -8,7 +8,8 @@
 #include "cache_simulator.h"
 
 /**
-	Pointer to allow for function emulating
+	Pointer to allow for function emulating.
+	Generates an "empty" cache.
 **/
 CacheLine *makeColdCache()
 {
@@ -35,9 +36,8 @@ CacheLine *makeColdCache()
 /**
 	Initialization/tag methods - EDIT
 **/
-/**
-	Sets the number of bits for the set index and block offset
-**/
+
+/** Sets the number of bits for the set index and block offset **/
 void setSubs()
 {
 	int i = 1;
@@ -99,6 +99,7 @@ int getIndex(char address[], int tagLength)
 /**
 	Replacement algorithm
 **/
+
 /** Least Recently Used Replacement Algorithm **/
 /** Updates the most recently used set to find the least used line **/
 void updateRecents(int new, int index)
@@ -114,6 +115,7 @@ void updateRecents(int new, int index)
 /**
 	Cache read policy
 **/
+
 /** Performs a read operation on a read in address. **/
 void readCache(char address[])
 {
