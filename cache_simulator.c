@@ -214,7 +214,7 @@ int main(int argc, const char * argv[])
 
 	if(strcmp(argv[1], "-h") == 0)
 	{
-        printf("Usage: c-sim [-h] <cache size> <associativity> <block size> <write policy> <trace file> 
+        printf("Usage: c-sim [-h] <cache size> <associativity> <block size> <trace file> 
 		\n < cachesize > is the total size of the cache. This should be a power of 2. Also, it should always be true that < cachesize > = number of sets * < setsize > * < blocksize >. 
 		\n    For direct-mapped caches, < setsize > = 1. For n-way associative caches, < setsize > = n. ");
 	printf("\n    Given the above formula, together with < cachesize >, < setsize >, and < blocksize >, you can always compute the number of sets in your cache. 
