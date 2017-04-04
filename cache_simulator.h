@@ -31,8 +31,6 @@ int h_associativity = 0;
 int h_blockSub = 0;
 int h_setSub = 0;
 
-char h_write_policy[] = " "; /** Empty **/
-
 CacheLine* h_someCache;
 
 CacheLine *makeColdCache(); /** Fill CacheLine struct with invalid cache **/
@@ -42,7 +40,6 @@ CacheLine *makeColdCache(); /** Fill CacheLine struct with invalid cache **/
 **/
 void setSubs();
 int getTagLength(char address[]);
-/** Conversion to binary inputs not required? **/
 int getIndex(char address[], int tagLength);
 void updateRecents(int new, int index);
 
@@ -50,7 +47,6 @@ void updateRecents(int new, int index);
 	Cache read policy
 **/
 void readCache(char address[]);
-void readCache_wb(char address[]);
 
 /**
 	Utility/deallocation methods

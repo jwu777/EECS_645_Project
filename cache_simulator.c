@@ -205,13 +205,11 @@ void freeCache()
 	Tests and runs the simulator
 **/
 
-int main(int argc, const char* argv[])
+int main(int argc, const char * argv[])
 {
 	char *c;
 	char ip[20];
-	char wr[2];
 	char address[20];
-	char *binary;
 	FILE *traceFile; /** fstream variable equivalent **/
 
 	if(strcmp(argv[1], "-h") == 0)
@@ -223,9 +221,9 @@ int main(int argc, const char* argv[])
     }
 
 	/** Check if input matches amount of required parameters **/
-	if(argc < 6 || argc > 6)
+	if(argc < 5 || argc > 5)
 	{
-        printf("ERROR: Usage: c-sim [-h] <cache size> <associativity> <block size> <write policy> <trace file> \n");
+        printf("ERROR: Usage: c-sim [-h] <cache size> <associativity> <block size> <trace file> \n");
 
         return 1;
     }
@@ -263,22 +261,8 @@ int main(int argc, const char* argv[])
 		h_associativity = atoi(c);
 	}
 
-	/** Check write policy input **/
-	if(strcmp(argv[4], "wt") == 0)
-	{
-        strcpy(h_write_policy, "wt"); /** Copies "wt" into h_write_policy **/
-    }
-    else if(strcmp(argv[4], "wb") == 0)
-	{
-        strcpy(h_write_policy, "wb"); /** Copies "wb" into h_write_policy **/
-    }
-    else
-	{
-        printf("ERROR: invalid write policy \n");
-    }
-
 	/** Open trace file **/
-	traceFile = fopen(argv[5], "r");
+	traceFile = fopen(argv[4], "r");
 	if(traceFile == NULL)
 	{
 		fprintf(stderr, "ERROR: cannot open input file.\n");
@@ -305,27 +289,17 @@ int main(int argc, const char* argv[])
 	{
 		/** Check eof from ip variable **/
 
-		if(strcmp(h_write_policy, "wt") == 0)
-		{
-			/** Read access **/
-			readCache(address);
-
-		}
-		else
-		{
-			/** Read access **/
-			readCache_wb(address);
-		}
+		readCache(address);
 	}
 
 
 	printf("Cache hits: %d\n", h_cache_hits);
-    printf("Cache misses: %d\n", h_cache_misses);
-    printf("Memory reads: %d\n", h_memory_reads);
-    printf("Memory writes: %d\n", h_memory_writes);
+    	printf("Cache misses: %d\n", h_cache_misses);
+    	printf("Memory reads: %d\n", h_memory_reads);
+    	printf("Memory writes: %d\n", h_memory_writes);
 
 	fclose(traceFile);
-  	free_cache();
+  	/**free_cache();**/
 
 	return 0;
 
