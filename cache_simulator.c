@@ -36,7 +36,7 @@ CacheLine *makeColdCache()
 	Initialization/tag methods - EDIT
 **/
 /**
-	Set number of bits needed for the set index and block offset
+	Sets the number of bits for the set index and block offset
 **/
 void setSubs()
 {
@@ -117,10 +117,12 @@ void updateRecents(int new, int index)
 /** Performs a read operation on a read in address. **/
 void readCache(char address[])
 {
+	/** Calculate the set index **/
 	int index = getIndex(address, getTagLength(address)) * h_associativity;
 	int highestIndex = index;
 	int highest = 0;
 
+	/** Check set for a line where there is a tag match  **/
 	int i = index;
 	for(; i < index + h_associativity; i++)
 	{
@@ -138,13 +140,17 @@ void readCache(char address[])
 	h_cache_misses++;
 	h_memory_reads++;
 
+	/** Look again through set for a non-valid line **/
 	index = getIndex(address, getTagLength(address)) * h_associativity;
 	i = index;
 	for(; i < index + h_associativity; i++)
 	{
 		if(h_someCache[i].h_valid == 0)
-		{
+		{			
 			h_someCache[i].h_valid = 1;
+			
+			/** Reads data into line from lower memory **/
+			/** Gives a memory read **/
 			h_someCache[i].h_tagLength = getTagLength(address);
 			strcpy(h_someCache[i].h_tag, address);
 			updateRecents(i, h_someCache[i].h_set);
@@ -153,6 +159,7 @@ void readCache(char address[])
 		}
 	}
 
+	/** Looks to evict the last used line in the set **/
 	index = getIndex(address, getTagLength(address)) * h_associativity;
 	i = index;
 	for(; i < index + h_associativity; i++)
@@ -163,6 +170,9 @@ void readCache(char address[])
 			highestIndex = i;
 		}
 	}
+	
+	/** Reads data into line from lower memory **/
+	/** Gives a memory read **/
 	h_someCache[highestIndex].h_tagLength = getTagLength(address);
 	strcpy(h_someCache[highestIndex].h_tag, address);
 	updateRecents(highestIndex, h_someCache[highestIndex].h_set);
