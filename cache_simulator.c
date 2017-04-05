@@ -315,7 +315,6 @@ int main(int argc, const char * argv[])
 	printf("Cache hits: %d\n", h_cache_hits);
     	printf("Cache misses: %d\n", h_cache_misses);
     	printf("Memory reads: %d\n", h_memory_reads);
-    	printf("Memory writes: %d\n", h_memory_writes);
 
 	fclose(traceFile);
   	freeCache();
