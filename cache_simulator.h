@@ -21,7 +21,6 @@ typedef struct CacheLine
 int h_cache_hits = 0;
 int h_cache_misses = 0;
 int h_memory_reads = 0;
-int h_memory_writes = 0;
 
 int h_numLines = 0;
 int h_size = 0;
