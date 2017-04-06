@@ -38,7 +38,7 @@ CacheLine *makeInvalidCache()
 **/
 
 /** Sets the number of bits for the set index and block offset **/
-void setSubs()
+void setBits()
 {
 	int i = 1;
 	for(; i < h_blockSize; i*=2)
@@ -55,10 +55,10 @@ void setSubs()
 	i = 1;
 	for(; i < h_numLines / h_associativity; i*=2)
 	{
-		h_setSub++;
+		h_setBit++;
 	}
 	/** Checks after for-loop to validate **/
-	if((i != (h_numLines / h_associativity)) && h_setSub != 0)
+	if((i != (h_numLines / h_associativity)) && h_setBit != 0)
 	{
 		printf("ERROR: Associativity is not a power of 2.\n");
 		exit(1);
@@ -71,7 +71,7 @@ of sets **/
 int getTagLength(char address[])
 {
 	int tagLengthResult = 0;
-	tagLengthResult = strlen(address) - h_setSub - h_blockSub;
+	tagLengthResult = strlen(address) - h_setBit - h_blockSub;
 
 	return tagLengthResult;
 }
@@ -298,7 +298,7 @@ int main(int argc, const char * argv[])
 		return 1;
 	}
 
-	setSubs();
+	setBits();
 
 	/**
 		TRACE FILE READ - EDIT
