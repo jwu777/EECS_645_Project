@@ -1,5 +1,5 @@
 
-/** Cache Simulator written in Cache **/
+/** Cache Simulator written in C **/
 
 #include <stdio.h>
 #include <string.h>
@@ -11,7 +11,7 @@
 	Pointer to allow for function emulating.
 	Generates an "empty" cache.
 **/
-CacheLine *makeColdCache()
+CacheLine *makeInvalidCache()
 {
 	CacheLine *cache;
 
@@ -290,7 +290,7 @@ int main(int argc, const char * argv[])
 	}
 
 	h_numLines = h_size / h_blockSize;
-	h_someCache = makeColdCache();
+	h_someCache = makeInvalidCache();
 	if(h_numLines / h_associativity * h_associativity * h_blockSize != h_size || h_size == 0)
 	{
 		fprintf(stderr, "ERROR: invalid size, block size, or associativity. Cache size must greater than 0 and equal to num_sets * assoc * block size \n");
