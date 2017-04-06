@@ -28,7 +28,7 @@ int h_blockSize = 0;
 int h_associativity = 0;
 
 int h_blockSub = 0;
-int h_setSub = 0;
+int h_setBit = 0;
 
 CacheLine* h_someCache;
 
@@ -37,7 +37,7 @@ CacheLine *makeInvalidCache(); /** Fill CacheLine struct with invalid cache **/
 /**
 	Initialization/tag methods - EDIT
 **/
-void setSubs();
+void setBits();
 int getTagLength(char address[]);
 int getIndex(char address[], int tagLength);
 void updateRecents(int new, int index);
