@@ -3,7 +3,7 @@
 #define cache_simulator_h
 
 /**
-	Make a cold cache, with every line being invalid
+	Make a cache, with every line being invalid
 **/
 /** typedef added "clean up" code and reduce repetition of "struct" **/
 typedef struct CacheLine
@@ -32,7 +32,7 @@ int h_setSub = 0;
 
 CacheLine* h_someCache;
 
-CacheLine *makeColdCache(); /** Fill CacheLine struct with invalid cache **/
+CacheLine *makeInvalidCache(); /** Fill CacheLine struct with invalid cache **/
 
 /**
 	Initialization/tag methods - EDIT
