@@ -226,16 +226,8 @@ int main(int argc, const char * argv[])
 
 	if(strcmp(argv[1], "-h") == 0)
 	{
-        printf("Usage: c-sim [-h] <cache size> <associativity> <block size> <trace file> 
-		\n < cachesize > is the total size of the cache. This should be a power of 2. Also, it should always be true that < cachesize > = number of sets * < setsize > * < blocksize >. 
-		\n    For direct-mapped caches, < setsize > = 1. For n-way associative caches, < setsize > = n. ");
-	printf("\n    Given the above formula, together with < cachesize >, < setsize >, and < blocksize >, you can always compute the number of sets in your cache. 
-		\n < associativity > is one of: 
-		\n    - direct - simulate a direct mapped cache. \n");
-	printf("      - assoc - simulate a fully associative cache. 
-		\n    - assoc:n - simulate an n-way associative cache. n should be a power of 2. 
-		\n < blocksize > is an power of 2 integer that specifies the size of the cache block. 
-		\n < tracefile > is the name of a file that contains memory access traces. \n");
+		/** assoc:n **/
+        
         return 0;
     }
 
