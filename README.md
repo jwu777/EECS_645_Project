@@ -9,10 +9,9 @@ To compile the program:
 2. Compile the program using the make command.
 
 To run the program:
-cache_simulator [-h][cache_size][associativity][block_size][trace_file]
+cache_simulator [cache_size][associativity][block_size][trace_file]
 
 Parameter descriptions:
-  - "-h" can be "ignored".
   - "cache_size" is the total size of the cache.
     - This value should be a power of 2.
     - Also, <cache_size> = (number of sets) * (set size) * <block_size>
