@@ -219,22 +219,26 @@ void freeCache()
 
 int main(int argc, const char * argv[])
 {
-	char *c;
 	char ip[20];
 	char address[20];
 	FILE *traceFile; /** fstream variable equivalent **/
+
+	printf("Usage: cache-simulator <cache size> <associativity> <block size> <trace file> \n");
 
 	if(strcmp(argv[1], "-h") == 0)
 	{
 		/** assoc:n **/
         
-        return 0;
+        /**return 0;**/
     }
+
+/**TEST**/
+printf("Command arguments: %d\n",argc);
 
 	/** Check if input matches amount of required parameters **/
 	if(argc < 5 || argc > 5)
 	{
-        printf("ERROR: Usage: c-sim [-h] <cache size> <associativity> <block size> <trace file> \n");
+        printf("ERROR: Usage: cache-simulator <cache size> <associativity> <block size> <trace file> \n");
 
         return 1;
     }
@@ -242,38 +246,38 @@ int main(int argc, const char * argv[])
 	/** Cache size parameter **/
 	h_size = atoi(argv[1]); /** atoi converts String to integer **/
 
+/**TEST**/
+printf("Cache size: %d\n",h_size);
+
 	/** Block size parameter **/
 	h_blockSize = atoi(argv[3]);
+
+/**TEST**/
+printf("Block size: %d\n",h_blockSize);
 
 	/** Initialize h_associativity **/
 	/** Calculations depend on cache size and block size **/
 	h_associativity = 0;
 
 	/** Check associativity input **/
-	/** Remove/replace to implement integer input **/
-	if(strcmp(argv[2],"direct") == 0)
-	{
-		h_associativity = 1;
-	}
-	else if(strcmp(argv[2],"assoc") == 0)
-	{
-		h_associativity = h_size / h_blockSize;
-	}
-	else
-	{
-		c = strtok(argv[2], ":"); /** Breaks String/arg into tokens using delimiter ":" **/
-		c = strtok(NULL, ":");
-		if(c == NULL)
-		{
-			printf("ERROR: invalid associativity\n");
+	h_associativity = atoi(argv[2]);
 
-			return 1;
-		}
-		h_associativity = atoi(c);
+/**TEST**/
+printf("Associativity: %d\n",h_associativity);
+
+	if(h_associativity > 5)
+	{
+		printf("ERROR: High associativity\n");
+
+		return 1;
 	}
 
 	/** Open trace file **/
 	traceFile = fopen(argv[4], "r");
+
+/**TEST**/
+printf("Trace file: %s\n",argv[4]);
+
 	if(traceFile == NULL)
 	{
 		fprintf(stderr, "ERROR: cannot open input file.\n");
